@@ -21,7 +21,6 @@
 
 
 
-
 VPATH = @srcdir@
 am__is_gnu_make = { \
   if test -z '$(MAKELEVEL)'; then \
@@ -95,14 +94,13 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-@USE_ION_TRUE@am__append_1 = -DUSE_ION
 subdir = src
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
-DIST_COMMON = $(srcdir)/Makefile.am $(dist_bin_SCRIPTS) \
-	$(dist_pkgdata_DATA) $(noinst_HEADERS) $(am__DIST_COMMON)
+DIST_COMMON = $(srcdir)/Makefile.am $(dist_pkgdata_DATA) \
+	$(noinst_HEADERS) $(am__DIST_COMMON)
 mkinstalldirs = $(install_sh) -d
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
@@ -133,36 +131,23 @@ am__uninstall_files_from_dir = { \
     || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
          $(am__cd) "$$dir" && rm -f $$files; }; \
   }
-am__installdirs = "$(DESTDIR)$(plugindir)" "$(DESTDIR)$(bindir)" \
-	"$(DESTDIR)$(pkgdatadir)"
+am__installdirs = "$(DESTDIR)$(plugindir)" "$(DESTDIR)$(pkgdatadir)"
 LTLIBRARIES = $(plugin_LTLIBRARIES)
 am__DEPENDENCIES_1 =
-libgstnninferencedemo_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
-am__objects_1 = libgstnninferencedemo_la-gstnninferencedemo.lo \
-	libgstnninferencedemo_la-inference.lo \
-	libgstnninferencedemo_la-tflite_inference.lo \
-	libgstnninferencedemo_la-tflite_benchmark.lo \
-	libgstnninferencedemo_la-posenet.lo \
-	libgstnninferencedemo_la-mobilenet_ssd.lo \
-	libgstnninferencedemo_la-utils.lo \
-	libgstnninferencedemo_la-gstimxcommon.lo \
-	libgstnninferencedemo_la-imx_2d_device_allocator.lo \
-	libgstnninferencedemo_la-imx_2d_device.lo \
-	libgstnninferencedemo_la-imx_2d_device_g2d.lo
-am_libgstnninferencedemo_la_OBJECTS = $(am__objects_1)
-libgstnninferencedemo_la_OBJECTS =  \
-	$(am_libgstnninferencedemo_la_OBJECTS)
+libposenetimx8_la_DEPENDENCIES = $(am__DEPENDENCIES_1)
+am__objects_1 = libposenetimx8_la-posenet_imx8.lo \
+	libposenetimx8_la-tflite_inference.lo \
+	libposenetimx8_la-posenet.lo
+am_libposenetimx8_la_OBJECTS = $(am__objects_1)
+libposenetimx8_la_OBJECTS = $(am_libposenetimx8_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-libgstnninferencedemo_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
-	$(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CXXLD) $(libgstnninferencedemo_la_CXXFLAGS) \
-	$(CXXFLAGS) $(libgstnninferencedemo_la_LDFLAGS) $(LDFLAGS) -o \
-	$@
-SCRIPTS = $(dist_bin_SCRIPTS)
+libposenetimx8_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CXXLD) \
+	$(libposenetimx8_la_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) \
+	$(LDFLAGS) -o $@
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -178,37 +163,10 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade =  \
-	./$(DEPDIR)/libgstnninferencedemo_la-gstimxcommon.Plo \
-	./$(DEPDIR)/libgstnninferencedemo_la-gstnninferencedemo.Plo \
-	./$(DEPDIR)/libgstnninferencedemo_la-imx_2d_device.Plo \
-	./$(DEPDIR)/libgstnninferencedemo_la-imx_2d_device_allocator.Plo \
-	./$(DEPDIR)/libgstnninferencedemo_la-imx_2d_device_g2d.Plo \
-	./$(DEPDIR)/libgstnninferencedemo_la-inference.Plo \
-	./$(DEPDIR)/libgstnninferencedemo_la-mobilenet_ssd.Plo \
-	./$(DEPDIR)/libgstnninferencedemo_la-posenet.Plo \
-	./$(DEPDIR)/libgstnninferencedemo_la-tflite_benchmark.Plo \
-	./$(DEPDIR)/libgstnninferencedemo_la-tflite_inference.Plo \
-	./$(DEPDIR)/libgstnninferencedemo_la-utils.Plo
+am__depfiles_remade = ./$(DEPDIR)/libposenetimx8_la-posenet.Plo \
+	./$(DEPDIR)/libposenetimx8_la-posenet_imx8.Plo \
+	./$(DEPDIR)/libposenetimx8_la-tflite_inference.Plo
 am__mv = mv -f
-COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
-	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
-LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) \
-	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
-	$(AM_CFLAGS) $(CFLAGS)
-AM_V_CC = $(am__v_CC_@AM_V@)
-am__v_CC_ = $(am__v_CC_@AM_DEFAULT_V@)
-am__v_CC_0 = @echo "  CC      " $@;
-am__v_CC_1 = 
-CCLD = $(CC)
-LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(AM_LDFLAGS) $(LDFLAGS) -o $@
-AM_V_CCLD = $(am__v_CCLD_@AM_V@)
-am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
-am__v_CCLD_0 = @echo "  CCLD    " $@;
-am__v_CCLD_1 = 
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 LTCXXCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
@@ -227,8 +185,8 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(libgstnninferencedemo_la_SOURCES)
-DIST_SOURCES = $(libgstnninferencedemo_la_SOURCES)
+SOURCES = $(libposenetimx8_la_SOURCES)
+DIST_SOURCES = $(libposenetimx8_la_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -328,7 +286,7 @@ PACKAGE = @PACKAGE@
 PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
 
 # package name
-PACKAGE_NAME = gstnninferencedemo
+PACKAGE_NAME = posenetimx8
 PACKAGE_STRING = @PACKAGE_STRING@
 PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_URL = @PACKAGE_URL@
@@ -399,86 +357,34 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 
-# OpenCV
-#OPENCV_CXXFLAGS = `pkg-config --cflags opencv4`
-OPENCV_CXXFLAGS = \
-  -std=c++11 \
-  -I$(SDKTARGETSYSROOT)/usr/include/opencv4
-
-OPENCV_LIBS = \
-  -lopencv_highgui
-
-# -lopencv_core \
-# -lopencv_imgproc \
-# -lopencv_videoio \
-# -lopencv_imgcodecs
-
 # Tensorflow Lite
-TFLITE_CXXFLAGS = \
-  -I$(SDKTARGETSYSROOT)/usr/include/tensorflow/lite/tools/make/downloads/absl \
-  -I$(SDKTARGETSYSROOT)/usr/include/tensorflow/lite/tools/make/downloads/flatbuffers/include
-
 TFLITE_LIBS = -ltensorflow-lite
 
 ##############################################################################
-# libgstnninferencedemo.la
+# libposenetimx8.la
 ##############################################################################
-plugin_LTLIBRARIES = libgstnninferencedemo.la
+plugin_LTLIBRARIES = libposenetimx8.la
+
+#bin_PROGRAMS = gstnninferencedemo
 HEADERS_TF = \
-  gstnninferencedemo.h \
-  inference.h \
+  posenet_imx8.h \
   tflite_inference.h \
-  tflite_benchmark.h \
-  posenet.h \
-  mobilenet_ssd.h \
-  utils.h \
-  \
-  gstimx.h \
-  imx_2d_device.h \
-  imx_2d_device_allocator.h
+  posenet.h
 
 SOURCES_TF = \
-  gstnninferencedemo.cpp \
-  inference.cpp \
+  posenet_imx8.cpp \
   tflite_inference.cpp \
-  tflite_benchmark.cpp \
-  posenet.cpp \
-  mobilenet_ssd.cpp \
-  utils.cpp \
-  \
-  gstimxcommon.c \
-  imx_2d_device_allocator.c \
-  imx_2d_device.c \
-  imx_2d_device_g2d.c
+  posenet.cpp
 
 noinst_HEADERS = $(HEADERS_TF)
-libgstnninferencedemo_la_SOURCES = $(SOURCES_TF)
-libgstnninferencedemo_la_CFLAGS = -DUSE_G2D $(GST_PLUGINS_BASE_CFLAGS) \
-	$(OVXLIB_CFLAGS) $(am__append_1)
-libgstnninferencedemo_la_CXXFLAGS = \
-  $(libgstnninferencedemo_la_CFLAGS) \
-  $(OPENCV_CXXFLAGS) \
-  $(TFLITE_CXXFLAGS)
+libposenetimx8_la_SOURCES = $(SOURCES_TF)
+@USE_ION_TRUE@libposenetimx8_la_CFLAGS = -DUSE_ION
+libposenetimx8_la_CXXFLAGS = \
+  $(libposenetimx8_la_CFLAGS)
 
-libgstnninferencedemo_la_LIBADD = \
-  $(GST_PLUGINS_BASE_LIBS) \
-  -lgstallocators-$(GST_API_VERSION) \
-  -lgstvideo-$(GST_API_VERSION) \
-  -lg2d \
+libposenetimx8_la_LIBADD = \
   $(TFLITE_LIBS) \
-  $(OPENCV_LIBS) \
-  $(OVXLIB_LIBS) \
   -lgooglecoraledgetpuposenet
-
-libgstnninferencedemo_la_LDFLAGS = $(GST_PLUGIN_LDFLAGS)
-libgstnninferencedemo_la_LIBTOOLFLAGS = $(GST_PLUGIN_LIBTOOLFLAGS)
-
-# scripts
-dist_bin_SCRIPTS = \
-  $(PACKAGE_NAME)-mobilenet-ssd-camera \
-  $(PACKAGE_NAME)-mobilenet-ssd-video \
-  $(PACKAGE_NAME)-posenet-camera \
-  $(PACKAGE_NAME)-posenet-video
 
 dist_pkgdata_DATA = \
   $(top_srcdir)/README \
@@ -488,7 +394,7 @@ dist_pkgdata_DATA = \
 all: all-am
 
 .SUFFIXES:
-.SUFFIXES: .c .cpp .lo .o .obj
+.SUFFIXES: .cpp .lo .o .obj
 $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
@@ -554,43 +460,8 @@ clean-pluginLTLIBRARIES:
 	  rm -f $${locs}; \
 	}
 
-libgstnninferencedemo.la: $(libgstnninferencedemo_la_OBJECTS) $(libgstnninferencedemo_la_DEPENDENCIES) $(EXTRA_libgstnninferencedemo_la_DEPENDENCIES) 
-	$(AM_V_CXXLD)$(libgstnninferencedemo_la_LINK) -rpath $(plugindir) $(libgstnninferencedemo_la_OBJECTS) $(libgstnninferencedemo_la_LIBADD) $(LIBS)
-install-dist_binSCRIPTS: $(dist_bin_SCRIPTS)
-	@$(NORMAL_INSTALL)
-	@list='$(dist_bin_SCRIPTS)'; test -n "$(bindir)" || list=; \
-	if test -n "$$list"; then \
-	  echo " $(MKDIR_P) '$(DESTDIR)$(bindir)'"; \
-	  $(MKDIR_P) "$(DESTDIR)$(bindir)" || exit 1; \
-	fi; \
-	for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  if test -f "$$d$$p"; then echo "$$d$$p"; echo "$$p"; else :; fi; \
-	done | \
-	sed -e 'p;s,.*/,,;n' \
-	    -e 'h;s|.*|.|' \
-	    -e 'p;x;s,.*/,,;$(transform)' | sed 'N;N;N;s,\n, ,g' | \
-	$(AWK) 'BEGIN { files["."] = ""; dirs["."] = 1; } \
-	  { d=$$3; if (dirs[d] != 1) { print "d", d; dirs[d] = 1 } \
-	    if ($$2 == $$4) { files[d] = files[d] " " $$1; \
-	      if (++n[d] == $(am__install_max)) { \
-		print "f", d, files[d]; n[d] = 0; files[d] = "" } } \
-	    else { print "f", d "/" $$4, $$1 } } \
-	  END { for (d in files) print "f", d, files[d] }' | \
-	while read type dir files; do \
-	     if test "$$dir" = .; then dir=; else dir=/$$dir; fi; \
-	     test -z "$$files" || { \
-	       echo " $(INSTALL_SCRIPT) $$files '$(DESTDIR)$(bindir)$$dir'"; \
-	       $(INSTALL_SCRIPT) $$files "$(DESTDIR)$(bindir)$$dir" || exit $$?; \
-	     } \
-	; done
-
-uninstall-dist_binSCRIPTS:
-	@$(NORMAL_UNINSTALL)
-	@list='$(dist_bin_SCRIPTS)'; test -n "$(bindir)" || exit 0; \
-	files=`for p in $$list; do echo "$$p"; done | \
-	       sed -e 's,.*/,,;$(transform)'`; \
-	dir='$(DESTDIR)$(bindir)'; $(am__uninstall_files_from_dir)
+libposenetimx8.la: $(libposenetimx8_la_OBJECTS) $(libposenetimx8_la_DEPENDENCIES) $(EXTRA_libposenetimx8_la_DEPENDENCIES) 
+	$(AM_V_CXXLD)$(libposenetimx8_la_LINK) -rpath $(plugindir) $(libposenetimx8_la_OBJECTS) $(libposenetimx8_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -598,72 +469,15 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgstnninferencedemo_la-gstimxcommon.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgstnninferencedemo_la-gstnninferencedemo.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgstnninferencedemo_la-imx_2d_device.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgstnninferencedemo_la-imx_2d_device_allocator.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgstnninferencedemo_la-imx_2d_device_g2d.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgstnninferencedemo_la-inference.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgstnninferencedemo_la-mobilenet_ssd.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgstnninferencedemo_la-posenet.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgstnninferencedemo_la-tflite_benchmark.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgstnninferencedemo_la-tflite_inference.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgstnninferencedemo_la-utils.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libposenetimx8_la-posenet.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libposenetimx8_la-posenet_imx8.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libposenetimx8_la-tflite_inference.Plo@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
 	@echo '# dummy' >$@-t && $(am__mv) $@-t $@
 
 am--depfiles: $(am__depfiles_remade)
-
-.c.o:
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(COMPILE) -c -o $@ $<
-
-.c.obj:
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `$(CYGPATH_W) '$<'`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(COMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
-
-.c.lo:
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LTCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LTCOMPILE) -c -o $@ $<
-
-libgstnninferencedemo_la-gstimxcommon.lo: gstimxcommon.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgstnninferencedemo_la_CFLAGS) $(CFLAGS) -MT libgstnninferencedemo_la-gstimxcommon.lo -MD -MP -MF $(DEPDIR)/libgstnninferencedemo_la-gstimxcommon.Tpo -c -o libgstnninferencedemo_la-gstimxcommon.lo `test -f 'gstimxcommon.c' || echo '$(srcdir)/'`gstimxcommon.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgstnninferencedemo_la-gstimxcommon.Tpo $(DEPDIR)/libgstnninferencedemo_la-gstimxcommon.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='gstimxcommon.c' object='libgstnninferencedemo_la-gstimxcommon.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgstnninferencedemo_la_CFLAGS) $(CFLAGS) -c -o libgstnninferencedemo_la-gstimxcommon.lo `test -f 'gstimxcommon.c' || echo '$(srcdir)/'`gstimxcommon.c
-
-libgstnninferencedemo_la-imx_2d_device_allocator.lo: imx_2d_device_allocator.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgstnninferencedemo_la_CFLAGS) $(CFLAGS) -MT libgstnninferencedemo_la-imx_2d_device_allocator.lo -MD -MP -MF $(DEPDIR)/libgstnninferencedemo_la-imx_2d_device_allocator.Tpo -c -o libgstnninferencedemo_la-imx_2d_device_allocator.lo `test -f 'imx_2d_device_allocator.c' || echo '$(srcdir)/'`imx_2d_device_allocator.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgstnninferencedemo_la-imx_2d_device_allocator.Tpo $(DEPDIR)/libgstnninferencedemo_la-imx_2d_device_allocator.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='imx_2d_device_allocator.c' object='libgstnninferencedemo_la-imx_2d_device_allocator.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgstnninferencedemo_la_CFLAGS) $(CFLAGS) -c -o libgstnninferencedemo_la-imx_2d_device_allocator.lo `test -f 'imx_2d_device_allocator.c' || echo '$(srcdir)/'`imx_2d_device_allocator.c
-
-libgstnninferencedemo_la-imx_2d_device.lo: imx_2d_device.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgstnninferencedemo_la_CFLAGS) $(CFLAGS) -MT libgstnninferencedemo_la-imx_2d_device.lo -MD -MP -MF $(DEPDIR)/libgstnninferencedemo_la-imx_2d_device.Tpo -c -o libgstnninferencedemo_la-imx_2d_device.lo `test -f 'imx_2d_device.c' || echo '$(srcdir)/'`imx_2d_device.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgstnninferencedemo_la-imx_2d_device.Tpo $(DEPDIR)/libgstnninferencedemo_la-imx_2d_device.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='imx_2d_device.c' object='libgstnninferencedemo_la-imx_2d_device.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgstnninferencedemo_la_CFLAGS) $(CFLAGS) -c -o libgstnninferencedemo_la-imx_2d_device.lo `test -f 'imx_2d_device.c' || echo '$(srcdir)/'`imx_2d_device.c
-
-libgstnninferencedemo_la-imx_2d_device_g2d.lo: imx_2d_device_g2d.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgstnninferencedemo_la_CFLAGS) $(CFLAGS) -MT libgstnninferencedemo_la-imx_2d_device_g2d.lo -MD -MP -MF $(DEPDIR)/libgstnninferencedemo_la-imx_2d_device_g2d.Tpo -c -o libgstnninferencedemo_la-imx_2d_device_g2d.lo `test -f 'imx_2d_device_g2d.c' || echo '$(srcdir)/'`imx_2d_device_g2d.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgstnninferencedemo_la-imx_2d_device_g2d.Tpo $(DEPDIR)/libgstnninferencedemo_la-imx_2d_device_g2d.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='imx_2d_device_g2d.c' object='libgstnninferencedemo_la-imx_2d_device_g2d.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgstnninferencedemo_la_CFLAGS) $(CFLAGS) -c -o libgstnninferencedemo_la-imx_2d_device_g2d.lo `test -f 'imx_2d_device_g2d.c' || echo '$(srcdir)/'`imx_2d_device_g2d.c
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -686,54 +500,26 @@ libgstnninferencedemo_la-imx_2d_device_g2d.lo: imx_2d_device_g2d.c
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LTCXXCOMPILE) -c -o $@ $<
 
-libgstnninferencedemo_la-gstnninferencedemo.lo: gstnninferencedemo.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgstnninferencedemo_la_CXXFLAGS) $(CXXFLAGS) -MT libgstnninferencedemo_la-gstnninferencedemo.lo -MD -MP -MF $(DEPDIR)/libgstnninferencedemo_la-gstnninferencedemo.Tpo -c -o libgstnninferencedemo_la-gstnninferencedemo.lo `test -f 'gstnninferencedemo.cpp' || echo '$(srcdir)/'`gstnninferencedemo.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgstnninferencedemo_la-gstnninferencedemo.Tpo $(DEPDIR)/libgstnninferencedemo_la-gstnninferencedemo.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='gstnninferencedemo.cpp' object='libgstnninferencedemo_la-gstnninferencedemo.lo' libtool=yes @AMDEPBACKSLASH@
+libposenetimx8_la-posenet_imx8.lo: posenet_imx8.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libposenetimx8_la_CXXFLAGS) $(CXXFLAGS) -MT libposenetimx8_la-posenet_imx8.lo -MD -MP -MF $(DEPDIR)/libposenetimx8_la-posenet_imx8.Tpo -c -o libposenetimx8_la-posenet_imx8.lo `test -f 'posenet_imx8.cpp' || echo '$(srcdir)/'`posenet_imx8.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libposenetimx8_la-posenet_imx8.Tpo $(DEPDIR)/libposenetimx8_la-posenet_imx8.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='posenet_imx8.cpp' object='libposenetimx8_la-posenet_imx8.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgstnninferencedemo_la_CXXFLAGS) $(CXXFLAGS) -c -o libgstnninferencedemo_la-gstnninferencedemo.lo `test -f 'gstnninferencedemo.cpp' || echo '$(srcdir)/'`gstnninferencedemo.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libposenetimx8_la_CXXFLAGS) $(CXXFLAGS) -c -o libposenetimx8_la-posenet_imx8.lo `test -f 'posenet_imx8.cpp' || echo '$(srcdir)/'`posenet_imx8.cpp
 
-libgstnninferencedemo_la-inference.lo: inference.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgstnninferencedemo_la_CXXFLAGS) $(CXXFLAGS) -MT libgstnninferencedemo_la-inference.lo -MD -MP -MF $(DEPDIR)/libgstnninferencedemo_la-inference.Tpo -c -o libgstnninferencedemo_la-inference.lo `test -f 'inference.cpp' || echo '$(srcdir)/'`inference.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgstnninferencedemo_la-inference.Tpo $(DEPDIR)/libgstnninferencedemo_la-inference.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='inference.cpp' object='libgstnninferencedemo_la-inference.lo' libtool=yes @AMDEPBACKSLASH@
+libposenetimx8_la-tflite_inference.lo: tflite_inference.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libposenetimx8_la_CXXFLAGS) $(CXXFLAGS) -MT libposenetimx8_la-tflite_inference.lo -MD -MP -MF $(DEPDIR)/libposenetimx8_la-tflite_inference.Tpo -c -o libposenetimx8_la-tflite_inference.lo `test -f 'tflite_inference.cpp' || echo '$(srcdir)/'`tflite_inference.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libposenetimx8_la-tflite_inference.Tpo $(DEPDIR)/libposenetimx8_la-tflite_inference.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='tflite_inference.cpp' object='libposenetimx8_la-tflite_inference.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgstnninferencedemo_la_CXXFLAGS) $(CXXFLAGS) -c -o libgstnninferencedemo_la-inference.lo `test -f 'inference.cpp' || echo '$(srcdir)/'`inference.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libposenetimx8_la_CXXFLAGS) $(CXXFLAGS) -c -o libposenetimx8_la-tflite_inference.lo `test -f 'tflite_inference.cpp' || echo '$(srcdir)/'`tflite_inference.cpp
 
-libgstnninferencedemo_la-tflite_inference.lo: tflite_inference.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgstnninferencedemo_la_CXXFLAGS) $(CXXFLAGS) -MT libgstnninferencedemo_la-tflite_inference.lo -MD -MP -MF $(DEPDIR)/libgstnninferencedemo_la-tflite_inference.Tpo -c -o libgstnninferencedemo_la-tflite_inference.lo `test -f 'tflite_inference.cpp' || echo '$(srcdir)/'`tflite_inference.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgstnninferencedemo_la-tflite_inference.Tpo $(DEPDIR)/libgstnninferencedemo_la-tflite_inference.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='tflite_inference.cpp' object='libgstnninferencedemo_la-tflite_inference.lo' libtool=yes @AMDEPBACKSLASH@
+libposenetimx8_la-posenet.lo: posenet.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libposenetimx8_la_CXXFLAGS) $(CXXFLAGS) -MT libposenetimx8_la-posenet.lo -MD -MP -MF $(DEPDIR)/libposenetimx8_la-posenet.Tpo -c -o libposenetimx8_la-posenet.lo `test -f 'posenet.cpp' || echo '$(srcdir)/'`posenet.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libposenetimx8_la-posenet.Tpo $(DEPDIR)/libposenetimx8_la-posenet.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='posenet.cpp' object='libposenetimx8_la-posenet.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgstnninferencedemo_la_CXXFLAGS) $(CXXFLAGS) -c -o libgstnninferencedemo_la-tflite_inference.lo `test -f 'tflite_inference.cpp' || echo '$(srcdir)/'`tflite_inference.cpp
-
-libgstnninferencedemo_la-tflite_benchmark.lo: tflite_benchmark.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgstnninferencedemo_la_CXXFLAGS) $(CXXFLAGS) -MT libgstnninferencedemo_la-tflite_benchmark.lo -MD -MP -MF $(DEPDIR)/libgstnninferencedemo_la-tflite_benchmark.Tpo -c -o libgstnninferencedemo_la-tflite_benchmark.lo `test -f 'tflite_benchmark.cpp' || echo '$(srcdir)/'`tflite_benchmark.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgstnninferencedemo_la-tflite_benchmark.Tpo $(DEPDIR)/libgstnninferencedemo_la-tflite_benchmark.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='tflite_benchmark.cpp' object='libgstnninferencedemo_la-tflite_benchmark.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgstnninferencedemo_la_CXXFLAGS) $(CXXFLAGS) -c -o libgstnninferencedemo_la-tflite_benchmark.lo `test -f 'tflite_benchmark.cpp' || echo '$(srcdir)/'`tflite_benchmark.cpp
-
-libgstnninferencedemo_la-posenet.lo: posenet.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgstnninferencedemo_la_CXXFLAGS) $(CXXFLAGS) -MT libgstnninferencedemo_la-posenet.lo -MD -MP -MF $(DEPDIR)/libgstnninferencedemo_la-posenet.Tpo -c -o libgstnninferencedemo_la-posenet.lo `test -f 'posenet.cpp' || echo '$(srcdir)/'`posenet.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgstnninferencedemo_la-posenet.Tpo $(DEPDIR)/libgstnninferencedemo_la-posenet.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='posenet.cpp' object='libgstnninferencedemo_la-posenet.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgstnninferencedemo_la_CXXFLAGS) $(CXXFLAGS) -c -o libgstnninferencedemo_la-posenet.lo `test -f 'posenet.cpp' || echo '$(srcdir)/'`posenet.cpp
-
-libgstnninferencedemo_la-mobilenet_ssd.lo: mobilenet_ssd.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgstnninferencedemo_la_CXXFLAGS) $(CXXFLAGS) -MT libgstnninferencedemo_la-mobilenet_ssd.lo -MD -MP -MF $(DEPDIR)/libgstnninferencedemo_la-mobilenet_ssd.Tpo -c -o libgstnninferencedemo_la-mobilenet_ssd.lo `test -f 'mobilenet_ssd.cpp' || echo '$(srcdir)/'`mobilenet_ssd.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgstnninferencedemo_la-mobilenet_ssd.Tpo $(DEPDIR)/libgstnninferencedemo_la-mobilenet_ssd.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='mobilenet_ssd.cpp' object='libgstnninferencedemo_la-mobilenet_ssd.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgstnninferencedemo_la_CXXFLAGS) $(CXXFLAGS) -c -o libgstnninferencedemo_la-mobilenet_ssd.lo `test -f 'mobilenet_ssd.cpp' || echo '$(srcdir)/'`mobilenet_ssd.cpp
-
-libgstnninferencedemo_la-utils.lo: utils.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgstnninferencedemo_la_CXXFLAGS) $(CXXFLAGS) -MT libgstnninferencedemo_la-utils.lo -MD -MP -MF $(DEPDIR)/libgstnninferencedemo_la-utils.Tpo -c -o libgstnninferencedemo_la-utils.lo `test -f 'utils.cpp' || echo '$(srcdir)/'`utils.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgstnninferencedemo_la-utils.Tpo $(DEPDIR)/libgstnninferencedemo_la-utils.Plo
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='utils.cpp' object='libgstnninferencedemo_la-utils.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(libgstnninferencedemo_la_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgstnninferencedemo_la_CXXFLAGS) $(CXXFLAGS) -c -o libgstnninferencedemo_la-utils.lo `test -f 'utils.cpp' || echo '$(srcdir)/'`utils.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libposenetimx8_la_CXXFLAGS) $(CXXFLAGS) -c -o libposenetimx8_la-posenet.lo `test -f 'posenet.cpp' || echo '$(srcdir)/'`posenet.cpp
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -849,9 +635,9 @@ distdir-am: $(DISTFILES)
 	done
 check-am: all-am
 check: check-am
-all-am: Makefile $(LTLIBRARIES) $(SCRIPTS) $(DATA) $(HEADERS)
+all-am: Makefile $(LTLIBRARIES) $(DATA) $(HEADERS)
 installdirs:
-	for dir in "$(DESTDIR)$(plugindir)" "$(DESTDIR)$(bindir)" "$(DESTDIR)$(pkgdatadir)"; do \
+	for dir in "$(DESTDIR)$(plugindir)" "$(DESTDIR)$(pkgdatadir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-am
@@ -890,17 +676,9 @@ clean-am: clean-generic clean-libtool clean-pluginLTLIBRARIES \
 	mostlyclean-am
 
 distclean: distclean-am
-		-rm -f ./$(DEPDIR)/libgstnninferencedemo_la-gstimxcommon.Plo
-	-rm -f ./$(DEPDIR)/libgstnninferencedemo_la-gstnninferencedemo.Plo
-	-rm -f ./$(DEPDIR)/libgstnninferencedemo_la-imx_2d_device.Plo
-	-rm -f ./$(DEPDIR)/libgstnninferencedemo_la-imx_2d_device_allocator.Plo
-	-rm -f ./$(DEPDIR)/libgstnninferencedemo_la-imx_2d_device_g2d.Plo
-	-rm -f ./$(DEPDIR)/libgstnninferencedemo_la-inference.Plo
-	-rm -f ./$(DEPDIR)/libgstnninferencedemo_la-mobilenet_ssd.Plo
-	-rm -f ./$(DEPDIR)/libgstnninferencedemo_la-posenet.Plo
-	-rm -f ./$(DEPDIR)/libgstnninferencedemo_la-tflite_benchmark.Plo
-	-rm -f ./$(DEPDIR)/libgstnninferencedemo_la-tflite_inference.Plo
-	-rm -f ./$(DEPDIR)/libgstnninferencedemo_la-utils.Plo
+		-rm -f ./$(DEPDIR)/libposenetimx8_la-posenet.Plo
+	-rm -f ./$(DEPDIR)/libposenetimx8_la-posenet_imx8.Plo
+	-rm -f ./$(DEPDIR)/libposenetimx8_la-tflite_inference.Plo
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -924,7 +702,7 @@ install-dvi: install-dvi-am
 
 install-dvi-am:
 
-install-exec-am: install-dist_binSCRIPTS
+install-exec-am:
 
 install-html: install-html-am
 
@@ -947,17 +725,9 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-		-rm -f ./$(DEPDIR)/libgstnninferencedemo_la-gstimxcommon.Plo
-	-rm -f ./$(DEPDIR)/libgstnninferencedemo_la-gstnninferencedemo.Plo
-	-rm -f ./$(DEPDIR)/libgstnninferencedemo_la-imx_2d_device.Plo
-	-rm -f ./$(DEPDIR)/libgstnninferencedemo_la-imx_2d_device_allocator.Plo
-	-rm -f ./$(DEPDIR)/libgstnninferencedemo_la-imx_2d_device_g2d.Plo
-	-rm -f ./$(DEPDIR)/libgstnninferencedemo_la-inference.Plo
-	-rm -f ./$(DEPDIR)/libgstnninferencedemo_la-mobilenet_ssd.Plo
-	-rm -f ./$(DEPDIR)/libgstnninferencedemo_la-posenet.Plo
-	-rm -f ./$(DEPDIR)/libgstnninferencedemo_la-tflite_benchmark.Plo
-	-rm -f ./$(DEPDIR)/libgstnninferencedemo_la-tflite_inference.Plo
-	-rm -f ./$(DEPDIR)/libgstnninferencedemo_la-utils.Plo
+		-rm -f ./$(DEPDIR)/libposenetimx8_la-posenet.Plo
+	-rm -f ./$(DEPDIR)/libposenetimx8_la-posenet_imx8.Plo
+	-rm -f ./$(DEPDIR)/libposenetimx8_la-tflite_inference.Plo
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
@@ -974,8 +744,7 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-dist_binSCRIPTS uninstall-dist_pkgdataDATA \
-	uninstall-pluginLTLIBRARIES
+uninstall-am: uninstall-dist_pkgdataDATA uninstall-pluginLTLIBRARIES
 
 .MAKE: install-am install-data-am install-strip
 
@@ -985,21 +754,21 @@ uninstall-am: uninstall-dist_binSCRIPTS uninstall-dist_pkgdataDATA \
 	distclean-generic distclean-libtool distclean-tags distdir dvi \
 	dvi-am html html-am info info-am install install-am \
 	install-data install-data-am install-data-hook \
-	install-dist_binSCRIPTS install-dist_pkgdataDATA install-dvi \
-	install-dvi-am install-exec install-exec-am install-html \
-	install-html-am install-info install-info-am install-man \
-	install-pdf install-pdf-am install-pluginLTLIBRARIES \
-	install-ps install-ps-am install-strip installcheck \
-	installcheck-am installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-compile \
-	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	tags tags-am uninstall uninstall-am uninstall-dist_binSCRIPTS \
-	uninstall-dist_pkgdataDATA uninstall-pluginLTLIBRARIES
+	install-dist_pkgdataDATA install-dvi install-dvi-am \
+	install-exec install-exec-am install-html install-html-am \
+	install-info install-info-am install-man install-pdf \
+	install-pdf-am install-pluginLTLIBRARIES install-ps \
+	install-ps-am install-strip installcheck installcheck-am \
+	installdirs maintainer-clean maintainer-clean-generic \
+	mostlyclean mostlyclean-compile mostlyclean-generic \
+	mostlyclean-libtool pdf pdf-am ps ps-am tags tags-am uninstall \
+	uninstall-am uninstall-dist_pkgdataDATA \
+	uninstall-pluginLTLIBRARIES
 
 .PRECIOUS: Makefile
 
 
-# don't install libgstnninferencedemo.la
+# don't install libposenetimx8.la
 install-data-hook:
 	@(cd $(DESTDIR)/$(plugindir) && $(RM) $(plugin_LTLIBRARIES))
 

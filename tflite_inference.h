@@ -22,10 +22,8 @@
 #define tflite_inference_h
 
 #include "tensorflow/lite/kernels/register.h"
-#include "inference.h"
 
-class tflite_inference_t : public inference_t
-{
+class tflite_inference_t{
 public:
 
   enum {
@@ -46,6 +44,8 @@ public:
   virtual int get_input_tensor(uint8_t **ptr, size_t* sz);
 
   bool verbose_ = false;
+  
+  int setup_input_tensor(int frame_height,int frame_width,int frame_depth, uint8_t *paddr);
 
 protected:
 
@@ -145,11 +145,6 @@ private:
     int use_nnapi);
 
   std::unique_ptr<tflite::FlatBufferModel> model_;
-
-  // unused
-  tflite_inference_t(const tflite_inference_t&);
-  tflite_inference_t& operator=(const tflite_inference_t&);
-
 };
 
 #endif
