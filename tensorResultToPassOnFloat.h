@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "tensorResultToPassOn.h"
+#include <cstring>
 
 class tensorResultToPassOnFloat : public tensorResultToPassOn {
 public:
