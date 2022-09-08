@@ -42,10 +42,12 @@ public:
   virtual int inference(void);
   virtual int get_input_tensor_shape(std::vector<int>* shape);
   virtual int get_input_tensor(uint8_t **ptr, size_t* sz);
+  virtual int get_input_tensor(float** ptr,size_t* sz);//DKLA
 
   bool verbose_ = false;
   
   int setup_input_tensor(int frame_height,int frame_width,int frame_depth, uint8_t *paddr);
+  int setup_input_tensor(std::vector<int> framedim,uint8_t* paddr);//DKLA
 
 protected:
 

@@ -13,14 +13,18 @@ plugin_LTLIBRARIES = libposenetimx8.la
 
 #bin_PROGRAMS = gstnninferencedemo
 HEADERS_TF = \
-  posenet_imx8.h \
+  general_inferencer.h \
   tflite_inference.h \
-  posenet.h
+  tensorResultToPassOn.h \
+  tensorResultToPassOnFloat.h \
+  tensorResultToPassOnUint8.h 
 
 SOURCES_TF = \
-  posenet_imx8.cpp \
+  general_inferencer.cpp \
   tflite_inference.cpp \
-  posenet.cpp
+  tensorResultToPassOn.cpp \
+  tensorResultToPassOnFloat.cpp \
+  tensorResultToPassOnUint8.cpp 
 
 noinst_HEADERS = $(HEADERS_TF)
 libposenetimx8_la_SOURCES = $(SOURCES_TF)

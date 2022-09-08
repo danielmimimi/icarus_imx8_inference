@@ -189,6 +189,51 @@ int tflite_inference_t::get_input_tensor(
   return OK;
 }
 
+int tflite_inference_t::get_input_tensor(
+	float** ptr,
+	size_t* sz)
+{
+	*ptr = typed_input_tensor<float>(0, sz);
+	return OK;
+}
+
+int tflite_inference_t::setup_input_tensor(
+	std::vector<int> framedim,
+	uint8_t* paddr)
+{
+	std::vector<int> shape;
+	get_input_tensor_shape(&shape);
+	// GET TYPE
+	TfLiteType inputTensorType = interpreter_.get()->input_tensor(0)->type;
+	// paddr must arrive at correct length
+	int ret = OK;
+	size_t sz = 0;
+	if (inputTensorType == TfLiteType::kTfLiteUInt8) {
+		uint8_t* rgb = 0; // error prone
+		ret = get_input_tensor(&rgb, &sz);
+		if (ret == OK) {
+			std::copy(paddr, paddr + sz, rgb);
+			return OK;
+		}
+		else
+		{
+			return ERROR;
+		}
+	}
+	else {
+		float* rgb = 0; // error prone
+		ret = get_input_tensor(&rgb, &sz);
+		if (ret == OK) {
+			std::copy(paddr, paddr + sz, rgb);
+			return OK;
+		}
+		else
+		{
+			return ERROR;
+		}
+	}
+}
+
 int tflite_inference_t::setup_input_tensor(
   int frame_height,
   int frame_width,
