@@ -44,7 +44,7 @@ libposenetimx8_la_LIBADD = \
   -lgooglecoraledgetpuposenet
 
 # package name
-PACKAGE_NAME=posenetimx8
+PACKAGE_NAME=icarusTensorflowInferencer
 
 # README
 pkgdatadir = $(datadir)/$(PACKAGE_NAME)
