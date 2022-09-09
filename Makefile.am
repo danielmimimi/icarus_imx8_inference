@@ -18,7 +18,8 @@ HEADERS_TF = \
   tensorResultToPassOn.h \
   tensorResultToPassOnFloat.h \
   tensorResultToPassOnUint8.h \
-  coralIcarusInference.h
+  coralIcarusInference.h \
+  coralIcarusInterface.h
 
 SOURCES_TF = \
   general_inferencer.cpp \
