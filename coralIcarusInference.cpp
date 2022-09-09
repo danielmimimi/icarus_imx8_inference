@@ -1,5 +1,7 @@
 #include "coralIcarusInference.h"
 
+generalInferencer mInferencer;
+
 coralIcarusInference::coralIcarusInference() 
 {
 }

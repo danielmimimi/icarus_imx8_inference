@@ -24,7 +24,7 @@ public:
     void inference(const std::vector<uint8_t>& inputImage, std::vector<tensorResultToPassOn*>& outResults);
 
 private:
-    generalInferencer mInferencer;
+
 };
 
 #endif
