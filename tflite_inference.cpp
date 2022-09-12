@@ -198,40 +198,50 @@ int tflite_inference_t::get_input_tensor(
 }
 
 int tflite_inference_t::setup_input_tensor(
-	std::vector<int> framedim,
-	uint8_t* paddr)
+    std::vector<int> framedim,
+    uint8_t *paddr)
 {
-	std::vector<int> shape;
-	get_input_tensor_shape(&shape);
-	// GET TYPE
-	TfLiteType inputTensorType = interpreter_.get()->input_tensor(0)->type;
-	// paddr must arrive at correct length
-	int ret = OK;
-	size_t sz = 0;
-	if (inputTensorType == TfLiteType::kTfLiteUInt8) {
-		uint8_t* rgb = 0; // error prone
-		ret = get_input_tensor(&rgb, &sz);
-		if (ret == OK) {
-			std::copy(paddr, paddr + sz, rgb);
-			return OK;
-		}
-		else
-		{
-			return ERROR;
-		}
-	}
-	else {
-		float* rgb = 0; // error prone
-		ret = get_input_tensor(&rgb, &sz);
-		if (ret == OK) {
-			std::copy(paddr, paddr + sz, rgb);
-			return OK;
-		}
-		else
-		{
-			return ERROR;
-		}
-	}
+  std::vector<int> shape;
+  get_input_tensor_shape(&shape);
+  printf("Got Input tensor");
+  // GET TYPE
+  TfLiteType inputTensorType = interpreter_->tensor(interpreter_->inputs()[0])->type;
+  printf("Got Input type");
+  // paddr must arrive at correct length
+  int ret = OK;
+  size_t sz = 0;
+  if (inputTensorType == TfLiteType::kTfLiteUInt8)
+  {
+	printf("tensor type is uint8");
+    uint8_t *rgb = 0; // error prone
+    ret = get_input_tensor(&rgb, &sz);
+    if (ret == OK)
+    {
+	  printf("copied image into input!");
+      std::copy(paddr, paddr + sz, rgb);
+      return OK;
+    }
+    else
+    {
+      return ERROR;
+    }
+  }
+  else
+  {
+	printf("tensor type is float");
+    float *rgb = 0; // error prone
+    ret = get_input_tensor(&rgb, &sz);
+    if (ret == OK)
+    {
+	  printf("copied image into input!");
+      std::copy(paddr, paddr + sz, rgb);
+      return OK;
+    }
+    else
+    {
+      return ERROR;
+    }
+  }
 }
 
 int tflite_inference_t::setup_input_tensor(
