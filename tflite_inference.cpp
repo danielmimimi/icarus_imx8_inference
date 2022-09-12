@@ -104,7 +104,6 @@ int tflite_inference_t::init(
   // initial inference test
   if(false){  
    int width = 0;
-   int width = 0;
    int height = 0;
    int channel = 0;
    std::vector<int> shape;
