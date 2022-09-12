@@ -114,10 +114,10 @@ int tflite_inference_t::init(
     // printf("Not supported input shape");
     // return ERROR;
   // }
-  size_t sz = 0;
-  uint8_t* p = 0;
-  int ret = get_input_tensor(&p, &sz);
-  std::memset(p, 0, sz);
+  // size_t sz = 0;
+  // uint8_t* p = 0;
+  // int ret = get_input_tensor(&p, &sz);
+  // std::memset(p, 0, sz);
   if (interpreter_->Invoke() != kTfLiteOk) {
     printf("Failed to invoke TFLite interpreter");
     return ERROR;
