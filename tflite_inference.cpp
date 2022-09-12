@@ -38,7 +38,7 @@
 // std
 #include <map>
 #include <fstream>
-
+#include <iostream>
 
 tflite_inference_t::tflite_inference_t()
 {
@@ -250,6 +250,7 @@ int tflite_inference_t::setup_input_tensor(
   int frame_depth,
   uint8_t *paddr)
 {
+  std::cout << "entered function" <<std::endl;
   // initial inference test
   int tensor_width = 0;
   int tensor_height = 0;
@@ -259,6 +260,7 @@ int tflite_inference_t::setup_input_tensor(
   tensor_height = shape[1];
   tensor_width = shape[2];
   tensor_channels = shape[3];
+  std::cout << "entered function" <<std::endl;
   if ((tensor_height != frame_height) || (tensor_width != frame_width) || (tensor_channels != frame_depth)) {
     printf("Input image size is not supported\n");
     return ERROR;
