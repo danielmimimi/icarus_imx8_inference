@@ -102,18 +102,18 @@ int tflite_inference_t::init(
   }
 
   // initial inference test
-  int width = 0;
-  int height = 0;
-  int channel = 0;
-  std::vector<int> shape;
-  get_input_tensor_shape(&shape);
-  height = shape[1];
-  width = shape[2];
-  channel = shape[3];
-  if ((width <= 0) || (height <= 0) || (channel != 3)) {
-    printf("Not supported input shape");
-    return ERROR;
-  }
+  // int width = 0;
+  // int height = 0;
+  // int channel = 0;
+  // std::vector<int> shape;
+  // get_input_tensor_shape(&shape);
+  // height = shape[1];
+  // width = shape[2];
+  // channel = shape[3];
+  // if ((width <= 0) || (height <= 0) || (channel != 3)) {
+    // printf("Not supported input shape");
+    // return ERROR;
+  // }
   size_t sz = 0;
   uint8_t* p = 0;
   int ret = get_input_tensor(&p, &sz);
