@@ -37,7 +37,7 @@ libposenetimx8_la_CFLAGS = -DUSE_ION
 endif
 
 libposenetimx8_la_CXXFLAGS = \
-  $(libposenetimx8_la_CFLAGS)
+  $(libposenetimx8_la_CFLAGS) -ggdb
 
 libposenetimx8_la_LIBADD = \
   $(TFLITE_LIBS) \
