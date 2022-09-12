@@ -5,8 +5,10 @@
 #include "tensorResultToPassOnUint8.h"
 #include "tensorResultToPassOnFloat.h"
 #include <cstring>
+#include <iostream>
+#include <fstream>
 
-generalInferencer::generalInferencer()
+generalInferencer::generalInferencer() : mFirstAttempt(true)
 {
 }
 
@@ -20,20 +22,39 @@ int generalInferencer::init(
     int use_nnapi,
     int num_threads)
 {
+	if(mFirstAttempt){	
+		std::cout << "Started Initialize Network... \n" << std::endl;
+	}
     int returnValue = tflite_inference_t::init(modelPath, use_nnapi, num_threads);
+	if(mFirstAttempt){	
+	std::cout << "Finished Initialize Network :  " << modelPath << " \n" <<   std::endl;
+	}
     returnValue = tflite_inference_t::get_input_tensor_shape(&outImageDimensions);
-    tflite_inference_t::get_input_tensor_shape(&outImageDimensions);
+	if(mFirstAttempt){	
+	std::cout << "Got Network input Dimensions \n" <<   std::endl;
+	}
     mInputImageDimension = outImageDimensions;
+	
     return returnValue;
 }
 
 void generalInferencer::inference(const std::vector<uint8_t> &inputImage, std::vector<tensorResultToPassOn*> &outResults)
 {
+	if(mFirstAttempt){	
+	std::cout << "Set Data" << std::endl;
+	}
     tflite_inference_t::setup_input_tensor_fast((uint8_t*)inputImage.data());
     //tflite_inference_t::setup_input_tensor(mInputImageDimension.at(3), mInputImageDimension.at(2), mInputImageDimension.at(1), (uint8_t *)inputImage.data());   
     //tflite_inference_t::setup_input_tensor(mInputImageDimension /* NOT REALLY NEEDED */, (uint8_t*)inputImage.data());
+	if(mFirstAttempt){	
+	std::cout << "Tries Inference" << std::endl;
+	}
     tflite_inference_t::inference();
+	if(mFirstAttempt){	
+	std::cout << "Pack inference result" << std::endl;
+	}
     packoutput(outResults);
+	mFirstAttempt = false;
 }
 
 void generalInferencer::packoutput(std::vector<tensorResultToPassOn*> &outResults)
