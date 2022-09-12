@@ -148,8 +148,7 @@ protected:
 
 private:
 
-  //int apply_delegate(
-  //  int use_nnapi);
+  int apply_delegate(int use_nnapi);
 
   std::unique_ptr<tflite::FlatBufferModel> model_;
 };
