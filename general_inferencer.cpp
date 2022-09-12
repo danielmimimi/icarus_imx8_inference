@@ -4,6 +4,7 @@
 #include <numeric>
 #include "tensorResultToPassOnUint8.h"
 #include "tensorResultToPassOnFloat.h"
+#include <cstring>
 
 generalInferencer::generalInferencer()
 {
@@ -28,7 +29,8 @@ int generalInferencer::init(
 
 void generalInferencer::inference(const std::vector<uint8_t> &inputImage, std::vector<tensorResultToPassOn*> &outResults)
 {
-    tflite_inference_t::setup_input_tensor(mInputImageDimension.at(3), mInputImageDimension.at(2), mInputImageDimension.at(1), (uint8_t *)inputImage.data());
+    tflite_inference_t::setup_input_tensor_fast((uint8_t*)inputImage.data());
+    //tflite_inference_t::setup_input_tensor(mInputImageDimension.at(3), mInputImageDimension.at(2), mInputImageDimension.at(1), (uint8_t *)inputImage.data());   
     //tflite_inference_t::setup_input_tensor(mInputImageDimension /* NOT REALLY NEEDED */, (uint8_t*)inputImage.data());
     tflite_inference_t::inference();
     packoutput(outResults);

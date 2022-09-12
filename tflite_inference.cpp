@@ -280,3 +280,44 @@ int tflite_inference_t::setup_input_tensor(
 	return ERROR;
   }
 }
+
+
+int tflite_inference_t::setup_input_tensor_fast(uint8_t* paddr)
+{
+	TfLiteType inputTensorType = interpreter_->tensor(interpreter_->inputs()[0])->type;
+	printf("Got Input type");
+	int ret = OK;
+	size_t sz = 0;
+	if (inputTensorType == TfLiteType::kTfLiteUInt8)
+	{
+		printf("tensor type is uint8");
+		uint8_t* rgb = 0; // error prone
+		ret = get_input_tensor(&rgb, &sz);
+		if (ret == OK)
+		{
+			printf("copied image into input!");
+			std::copy(paddr, paddr + sz, rgb);
+			return OK;
+		}
+		else
+		{
+			return ERROR;
+		}
+	}
+	else
+	{
+		printf("tensor type is float");
+		float* rgb = 0; // error prone
+		ret = get_input_tensor(&rgb, &sz);
+		if (ret == OK)
+		{
+			printf("copied image into input!");
+			std::copy(paddr, paddr + sz, rgb);
+			return OK;
+		}
+		else
+		{
+			return ERROR;
+		}
+	}
+}

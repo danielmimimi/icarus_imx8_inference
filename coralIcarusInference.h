@@ -10,7 +10,7 @@
 #include "general_inferencer.h"
 
 
-class coralIcarusInference 
+class coralIcarusInference
 {
 public:
     coralIcarusInference();
@@ -24,7 +24,7 @@ public:
     void inference(const std::vector<uint8_t>& inputImage, std::vector<tensorResultToPassOn*>& outResults);
 
 private:
-    generalInferencer mInferencer;
+    generalInferencer* mInferencer;
 };
 
 #endif
